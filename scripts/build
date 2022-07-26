@@ -1,0 +1,10 @@
+#!/usr/bin/env zx
+import { $ } from 'zx'
+
+let outFilename = `gluctl-${process.platform}-${process.arch}`
+if (process.platform === 'win32') {
+  outFilename = `${outFilename}.exe`
+}
+outFilename = 'gluctl'
+
+$`./node_modules/.bin/caxa --input . --output dist/${outFilename} --exclude dist -- '{{caxa}}/node_modules/.bin/zx' '{{caxa}}/gluctl'`
